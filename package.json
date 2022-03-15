@@ -1,0 +1,25 @@
+{
+  "name": "ping",
+  "version": "1.0",
+  "private": true,
+  "license": "Apache License 2.0",
+  "author": {
+    "name": "chianyin",
+    "email": "whereismoney@qq.com"
+  },
+  "engines": {
+    "node": ">= 16"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "jquery": "^3.6.0",
+    "less": "^4.1.2",
+    "normalize.css": "^8.0.1",
+    "prettier": "2.5.1",
+    "vite": "^2.8.0"
+  }
+}
