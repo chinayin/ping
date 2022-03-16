@@ -10,7 +10,7 @@ export const jsonp = (url, cb) => {
   return jQuery.ajax({
     url: url,
     dataType: 'jsonp',
-    timeout: 4000,
+    timeout: 10000,
     jsonp: 'cb',
     success: cb
   })
@@ -118,16 +118,18 @@ export const getImageCDNStatus = function (imgs, cb) {
  * @param cb
  */
 export const getAssetsCDNStatus = (url, cb) => {
+  let t = +new Date()
   return jQuery.ajax({
     url: url,
     dataType: 'script',
-    timeout: 2000,
-    success: () => {
-      return cb(1)
+    timeout: 10000,
+    success: (data, status, xhr) => {
+      return cb(1, +new Date() - t)
     },
-    error: () => {
-      return cb(0)
-    }
+    error: (xhr, status, err) => {
+      return cb(0, +new Date() - t)
+    },
+    complete: (xhr, status) => {}
   })
 }
 
@@ -137,16 +139,18 @@ export const getAssetsCDNStatus = (url, cb) => {
  * @param cb
  */
 export const getUrlStatus = (url, cb) => {
+  let t = +new Date()
   return jQuery.ajax({
     url: url,
     dataType: 'script',
-    timeout: 4000,
-    success: () => {
-      return cb(1)
+    timeout: 10000,
+    success: (data, status, xhr) => {
+      return cb(1, +new Date() - t)
     },
-    error: () => {
-      return cb(0)
-    }
+    error: (xhr, status, err) => {
+      return cb(0, +new Date() - t)
+    },
+    complete: (xhr, status) => {}
   })
 }
 

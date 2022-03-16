@@ -1,11 +1,21 @@
 import * as browser from '../libs/browser'
 import * as network from '../libs/network'
-import { label, querySelector as $ } from '../libs/utils'
+import { label, querySelector as $, toThousands } from '../libs/utils'
 
 export default function inspection() {
   let lines = [],
     webUrls = [],
     inspection = []
+
+  /**
+   * 测速结果输出
+   * @param success 结果
+   * @param ms  毫秒数值
+   */
+  const speedtest = (id, success, ms) => {
+    let flag = success ? label('连接成功', 'g') : label('连接失败', 'r')
+    $(`#${id}`).innerHTML = `${flag}   ${toThousands(ms)}ms`
+  }
 
   /**
    * 画界面
@@ -119,14 +129,13 @@ export default function inspection() {
       }
     )
 
-    network.getAssetsCDNStatus('https://pcpic.uhomes.com/static/lodash/lodash-4.17.15.min.js', success => {
-      let flag = success ? label('连接成功', 'g') : label('连接失败', 'r')
-      $('#s_cdn_assets').innerHTML = `${flag}`
+    network.getAssetsCDNStatus('https://pcpic.uhomes.com/static/lodash/lodash-4.17.15.min.js', (success, ms) => {
+      speedtest('s_cdn_assets', success, ms)
     })
 
     webUrls.forEach((item, index) => {
-      network.getUrlStatus(item.url, success => {
-        $(`#${item.id}`).innerHTML = success ? label('连接成功', 'g') : label('连接失败', 'r')
+      network.getUrlStatus(item.url, (success, ms) => {
+        speedtest(item.id, success, ms)
       })
     })
   }

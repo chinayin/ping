@@ -27,6 +27,15 @@ export const rand53 = () => {
 }
 
 /**
+ * 生成千分制
+ * @param num
+ * @returns {string}
+ */
+export const toThousands = num => {
+  return (num || 0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,')
+}
+
+/**
  *
  * @param selectors
  * @returns {*}
