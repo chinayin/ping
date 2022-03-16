@@ -9,7 +9,6 @@ FROM chinayin/node:16 AS builder
 RUN set -eux \
     ## install packages
     && install_packages tree \
-    && yarn config set registry https://registry.npmmirror.com \
     && mkdir /app
 WORKDIR /app
 COPY . /app
