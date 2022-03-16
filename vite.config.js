@@ -1,4 +1,5 @@
 import path from 'path'
+import legacy from '@vitejs/plugin-legacy'
 
 export default ({ command }) => {
   return {
@@ -16,7 +17,11 @@ export default ({ command }) => {
         '/@': path.resolve(__dirname, './src')
       }
     },
-    plugins: [],
+    plugins: [
+      legacy({
+        targets: ['defaults', 'not IE 10']
+      })
+    ],
     proxy: {}
   }
 }
