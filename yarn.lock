@@ -2,19 +2,19 @@
 # yarn lockfile v1
 
 
-"@babel/standalone@^7.17.2":
-  version "7.17.7"
-  resolved "https://registry.npmmirror.com/@babel/standalone/-/standalone-7.17.7.tgz"
-  integrity sha512-461jrYyk7g4bRQoOROABqErtygmZrx1cZXWONIPCQzVTynT5VL83btu1PJIaXNgl4JtHXjzaYT7j3IOlVhnC1Q==
+"@babel/standalone@^7.17.8":
+  version "7.17.8"
+  resolved "https://registry.npmmirror.com/@babel/standalone/-/standalone-7.17.8.tgz#517064e5b21015476d4dc9c6518b47bf2ec4d094"
+  integrity sha512-tr3SDpVnxR/fzrxyG+HZPAyEA9eTHZIAjy4eqrc7m+KBwsdo1YvTbUfJ6teWHQ177mk6GmdmltsIiOYCcvRPWA==
 
-"@vitejs/plugin-legacy@^1.7.1":
-  version "1.7.1"
-  resolved "https://registry.npmmirror.com/@vitejs/plugin-legacy/-/plugin-legacy-1.7.1.tgz"
-  integrity sha512-RqgILXsGpfV7NHodVCdBVau8ss5+ynMXp6JGF/F7nhSy0bnwSQPlMS3KFqh7twfifXK8VuMriqfU4CxOiqmNnA==
+"@vitejs/plugin-legacy@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.npmmirror.com/@vitejs/plugin-legacy/-/plugin-legacy-1.8.0.tgz#6521e6de924641094aad5d804eaef3ac7db71284"
+  integrity sha512-S3+uL1zp8GLUbmJAQk2wQbZLTyISKRFSMBwCFI3XQVRD3OZshqkiPyOKdRiSPlP9HoGz+q90kk+1qPm1tJRqCg==
   dependencies:
-    "@babel/standalone" "^7.17.2"
-    core-js "^3.21.0"
-    magic-string "^0.25.7"
+    "@babel/standalone" "^7.17.8"
+    core-js "^3.21.1"
+    magic-string "^0.26.1"
     regenerator-runtime "^0.13.9"
     systemjs "^6.12.1"
 
@@ -25,9 +25,9 @@ copy-anything@^2.0.1:
   dependencies:
     is-what "^3.14.1"
 
-core-js@^3.21.0:
+core-js@^3.21.1:
   version "3.21.1"
-  resolved "https://registry.npmmirror.com/core-js/-/core-js-3.21.1.tgz"
+  resolved "https://registry.npmmirror.com/core-js/-/core-js-3.21.1.tgz#f2e0ddc1fc43da6f904706e8e955bc19d06a0d94"
   integrity sha512-FRq5b/VMrWlrmCzwRrpDYNxyHP9BcAZC+xHJaqTgIE5091ZV1NTmyh0sGOg5XqpnHvR0svdy0sv1gWA1zmhxig==
 
 debug@^3.2.6:
@@ -238,10 +238,10 @@ less@^4.1.2:
     needle "^2.5.2"
     source-map "~0.6.0"
 
-magic-string@^0.25.7:
-  version "0.25.9"
-  resolved "https://registry.npmmirror.com/magic-string/-/magic-string-0.25.9.tgz"
-  integrity sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==
+magic-string@^0.26.1:
+  version "0.26.1"
+  resolved "https://registry.npmmirror.com/magic-string/-/magic-string-0.26.1.tgz#ba9b651354fa9512474199acecf9c6dbe93f97fd"
+  integrity sha512-ndThHmvgtieXe8J/VGPjG+Apu7v7ItcD5mhEIvOscWjPF/ccOiLxHaSuCAS2G+3x4GKsAbT8u7zdyamupui8Tg==
   dependencies:
     sourcemap-codec "^1.4.8"
 
