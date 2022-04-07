@@ -20,7 +20,7 @@ export default ({ command }) => {
         additionalLegacyPolyfills: ['regenerator-runtime/runtime']
       }),
       createHtmlPlugin({
-        minify: false,
+        minify: true,
         entry: '/src/main.js',
         template: 'index.html',
         inject: {
