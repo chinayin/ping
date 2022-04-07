@@ -25,3 +25,13 @@
 #### 支持浏览器：
 
 https://caniuse.com/es6-module
+
+#### 支持多语言：
+
+参照：[ISO-639](https://www.iso.org/iso-639-language-codes.html) 、
+[ISO-3166](https://www.iso.org/iso-3166-country-codes.html)
+
+- 简体中文
+- 繁体中文
+- 英语
+- 日语

@@ -1,8 +1,21 @@
-import messages from '../locales'
-import { format } from './utils'
+import messages from "../locales";
+import { format } from "./utils";
 
-const language = (navigator.language || navigator.userLanguage).toLowerCase().replace('-', '_'),
+/**
+ * 检测语言
+ * @returns {string}
+ */
+export const detectLocale = () => {
+  let language = (navigator.language || navigator.userLanguage).toLowerCase().replace('-', '_'),
+    locale = language
+  if (language === 'zh_tw') locale = 'zh_hk'
+  if (messages.hasOwnProperty(locale)) return locale
   locale = language.substr(0, 2)
+  if (messages.hasOwnProperty(locale)) return locale
+  return 'zh'
+}
+
+const locale = detectLocale()
 
 /**
  * 多语言支持

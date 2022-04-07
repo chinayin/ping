@@ -25,6 +25,6 @@
   "web_qq": "QQ",
   "web_bbc": "BBC",
   "web_cnn": "CNN",
-  "pic_cdn_result": "A total of {0} pictures were attempted, of which {1} were parsed normally",
+  "pic_cdn_result": "Attempt {0} pictures, {1} normally",
   "privacy_policy": "This page is only used to locate your browser and network information, and does not involve your privacy information. Please feel free to use it."
 }
