@@ -8,6 +8,7 @@
   <!--  <link rel="icon" type="image/svg+xml" href="./src/assets/favicon.svg" />-->
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google" content="notranslate" />
   <title>用户诊断工具</title>
   <script type="text/javascript">var JS_VERSION = 1.0;</script>
   <script language="Javascript1.1">var JS_VERSION = 1.1;</script>
@@ -22,13 +23,12 @@
 </head>
 <body>
 <div id="app">
-  <h1>用户诊断工具<em>__APP_VERSION__</em></h1>
-  <div class="info">此页面仅用于定位您的浏览器和网络信息，不涉及您的隐私信息，请放心使用。</div>
+  <h1 id="title"><span></span><em><%- appVersion %></em></h1>
+  <div class="info" id="privacy_policy"></div>
   <noscript>
-    <div>JavaScript 状态: 禁用。请开启后刷新重试。</div>
+    <div>JavaScript Status: Disable. Please turn it on and refresh and try again.</div>
   </noscript>
   <div id="content"></div>
 </div>
-<script type="module" src="./src/main.js"></script>
 </body>
 </html>

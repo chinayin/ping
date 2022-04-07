@@ -1,6 +1,7 @@
 import * as browser from '../libs/browser'
 import * as network from '../libs/network'
 import { label, querySelector as $, toThousands } from '../libs/utils'
+import { $t } from '../libs/locales'
 
 export default function inspection() {
   let lines = [],
@@ -13,7 +14,7 @@ export default function inspection() {
    * @param ms  毫秒数值
    */
   const speedtest = (id, success, ms) => {
-    let flag = success ? label('连接成功', 'g') : label('连接失败', 'r')
+    let flag = success ? label($t('successful'), 'g') : label($t('failed'), 'r')
     $(`#${id}`).innerHTML = `${flag}   ${toThousands(ms)}ms`
   }
 
@@ -21,70 +22,74 @@ export default function inspection() {
    * 画界面
    */
   const init = () => {
+    document.title = $t('title')
+    $('#title span').innerHTML = $t('title')
+    $('#privacy_policy').innerHTML = $t('privacy_policy')
+
     inspection = [
       {
-        title: '基础信息',
+        title: $t('basic_information'),
         items: [
-          { name: '系统时间', val: new Date() },
-          { name: 'UA信息', val: browser.getUAString() },
-          { name: '系统信息', val: browser.getOSInfo() },
-          { name: '浏览器信息', val: browser.getBrowserInfo() },
-          { name: '语言信息', val: browser.getLanguageString() },
+          { name: $t('system_time'), val: new Date() },
+          { name: $t('ua_information'), val: browser.getUAString() },
+          { name: $t('system_information'), val: browser.getOSInfo() },
+          { name: $t('web_browser_information'), val: browser.getBrowserInfo() },
+          { name: $t('language_information'), val: browser.getLanguageString() },
           {
-            name: 'JavaScript 状态',
-            val: label('开启 (版本号：' + JS_VERSION + ')', 'g')
+            name: $t('javascript_status'),
+            val: label(`${$t('enable')} (${$t('version_number')}：` + JS_VERSION + ')', 'g')
           },
           {
-            name: 'Cookie 状态',
-            val: browser.isSupportCookie() ? label('开启', 'g') : label('禁用', 'r')
+            name: $t('cookie_status'),
+            val: browser.isSupportCookie() ? label($t('enable'), 'g') : label($t('disable'), 'r')
           },
           {
-            name: 'LocalStorage 状态',
-            val: browser.isSupportLocalstorage() ? label('开启', 'g') : label('禁用', 'r')
+            name: $t('localstorage_status'),
+            val: browser.isSupportLocalstorage() ? label($t('enable'), 'g') : label($t('disable'), 'r')
           }
         ]
       },
       {
-        title: '网络信息',
+        title: $t('internet_information'),
         items: [
-          { name: '本地 IP', val: '检测中...', id: 's_local_ip' },
-          { name: 'Local DNS', val: '检测中...', id: 's_local_dns' },
-          { name: '图片 CDN', val: '检测中...', id: 's_cdn_image' },
-          { name: '静态 CDN', val: '检测中...', id: 's_cdn_assets' },
+          { name: `${$t('local')} IP`, val: $t('testing'), id: 's_local_ip' },
+          { name: 'Local DNS', val: $t('testing'), id: 's_local_dns' },
+          { name: `${$t('picture')} CDN`, val: $t('testing'), id: 's_cdn_image' },
+          { name: `${$t('static')} CDN`, val: $t('testing'), id: 's_cdn_assets' },
           //
           {
-            name: '异乡 API',
-            val: '检测中...',
+            name: $t('web_uhomes_api'),
+            val: $t('testing'),
             id: 's_web_uhomes_api',
             url: 'https://api.uhomes.com/robots.txt'
           },
           {
-            name: '淘宝首页',
-            val: '检测中...',
+            name: $t('web_taobao'),
+            val: $t('testing'),
             id: 's_web_taobao',
             url: 'https://www.taobao.com'
           },
           {
-            name: '新浪首页',
-            val: '检测中...',
+            name: $t('web_sina'),
+            val: $t('testing'),
             id: 's_web_sina',
             url: 'https://www.sina.com'
           },
           {
-            name: '腾讯首页',
-            val: '检测中...',
+            name: $t('web_qq'),
+            val: $t('testing'),
             id: 's_web_qq',
             url: 'https://www.qq.com'
           },
           {
-            name: 'BBC首页',
-            val: '检测中...',
+            name: $t('web_bbc'),
+            val: $t('testing'),
             id: 's_web_bbc',
             url: 'https://www.bbc.com'
           },
           {
-            name: 'CNN首页',
-            val: '检测中...',
+            name: $t('web_cnn'),
+            val: $t('testing'),
             id: 's_web_cnn',
             url: 'https://cnn.com'
           }
@@ -124,8 +129,8 @@ export default function inspection() {
         ['https://gw.alicdn.com/tps/i3/TB1yeWeIFXXXXX5XFXXuAZJYXXX-210-210.png_80x80.jpg', 80, 80]
       ],
       (success, total) => {
-        let flag = success === total ? label('连接成功', 'g') : label('连接失败', 'r')
-        $('#s_cdn_image').innerHTML = `${flag}，共尝试 ${total} 张图片，其中 ${success} 张解析正常`
+        let flag = success === total ? label($t('successful'), 'g') : label($t('failed'), 'r')
+        $('#s_cdn_image').innerHTML = `${flag}，${$t('pic_cdn_result', total, success)}`
       }
     )
 

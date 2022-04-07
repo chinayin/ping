@@ -36,6 +36,19 @@ export const toThousands = num => {
 }
 
 /**
+ * 格式化模板字符串
+ * @param str
+ * @param args
+ * @returns {*}
+ */
+export const format = (str, ...args) => {
+  for (let i = 0; i < args.length; i++) {
+    str = str.replace(new RegExp('({[' + i + ']})', 'g'), args[i])
+  }
+  return str
+}
+
+/**
  *
  * @param selectors
  * @returns {*}
