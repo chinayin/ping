@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@babel/standalone@^7.17.8":
+"@babel/standalone@^7.17.9":
   version "7.17.9"
   resolved "https://registry.npmmirror.com/@babel/standalone/-/standalone-7.17.9.tgz#208298055c70531a81759435e443586754d693f9"
   integrity sha512-9wL9AtDlga8avxUrBvQJmhUtJWrelsUL0uV+TcP+49Sb6Pj8/bNIzQzU4dDp0NAPOvnZR/7msFIKsKoCl/W1/w==
@@ -36,12 +36,12 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
-"@vitejs/plugin-legacy@^1.7.1":
-  version "1.8.0"
-  resolved "https://registry.npmmirror.com/@vitejs/plugin-legacy/-/plugin-legacy-1.8.0.tgz#6521e6de924641094aad5d804eaef3ac7db71284"
-  integrity sha512-S3+uL1zp8GLUbmJAQk2wQbZLTyISKRFSMBwCFI3XQVRD3OZshqkiPyOKdRiSPlP9HoGz+q90kk+1qPm1tJRqCg==
+"@vitejs/plugin-legacy@^1.8.1":
+  version "1.8.1"
+  resolved "https://registry.npmmirror.com/@vitejs/plugin-legacy/-/plugin-legacy-1.8.1.tgz#9431a983f950b4343d5b80a1916f25cc03d6b9c4"
+  integrity sha512-kmBWKq7EeNvzS4AqPBqUKdoWG/NYQXh7StUFMWR3D21aN5Mfmar7CTO2a7K+bBxJH/vAL9gnnueA0wb7cycCmQ==
   dependencies:
-    "@babel/standalone" "^7.17.8"
+    "@babel/standalone" "^7.17.9"
     core-js "^3.21.1"
     magic-string "^0.26.1"
     regenerator-runtime "^0.13.9"
