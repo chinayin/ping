@@ -13,6 +13,7 @@
   "javascript_status": "JavaScript 狀態",
   "cookie_status": "Cookie 狀態",
   "localstorage_status": "LocalStorage 狀態",
+  "network_type": "網絡類型",
   "successful": "成功",
   "failed": "失敗",
   "testing": "檢測中...",

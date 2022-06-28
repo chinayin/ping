@@ -3,7 +3,7 @@ singleQuote: true
 printWidth: 120
 trailingComma: 'none'
 arrowParens: 'avoid'
-#overrides:
-#  - files: "{**/*,*}.{js,ts,jsx,tsx}"
-#    options:
-#      parser: meriyah
+overrides:
+  - files: "{**/*,*}.{js,ts,jsx,tsx,js2}"
+    options:
+      parser: meriyah

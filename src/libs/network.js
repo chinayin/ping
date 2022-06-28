@@ -66,10 +66,10 @@ export const getLocalDNS = cb => {
  * @param cb
  * @returns {*[]}
  */
-export const getImageCDNStatus = function (imgs, cb) {
+export const getImageCDNStatus = (imgs, cb) => {
   let check, count, item, _i, _len, _results
   count = 0
-  check = function () {
+  check = () => {
     let arr, item
     count = count + 1
     if (count < imgs.length) {
@@ -159,7 +159,7 @@ export const getUrlStatus = (url, cb) => {
  * @param url
  * @param cb
  */
-export const getUrlVia = function (url, cb) {
+export const getUrlVia = (url, cb) => {
   let xhr = null
   if (window.XMLHttpRequest) {
     // code for IE7, Firefox, Opera, etc.
@@ -180,5 +180,28 @@ export const getUrlVia = function (url, cb) {
     if (xhr.readyState == 4) {
       cb(xhr.getAllResponseHeaders())
     }
+  }
+}
+
+/**
+ * 获取网络类型
+ * @returns {string}
+ */
+export const getNetworkType = () => {
+  let ua = navigator.userAgent,
+    networkStr = ua.match(/NetType\/\w+/) ? ua.match(/NetType\/\w+/)[0] : 'NetType/other'
+  networkStr = networkStr.toLowerCase().replace('nettype/', '')
+  switch (networkStr) {
+    case 'wifi':
+      return 'Wifi'
+    case '4g':
+      return '4g'
+    case '3g':
+    case '3gnet':
+      return '3g'
+    case '2g':
+      return '2g'
+    default:
+      return 'Other'
   }
 }

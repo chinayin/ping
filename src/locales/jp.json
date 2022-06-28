@@ -13,6 +13,7 @@
   "javascript_status": "JavaScriptステータス",
   "cookie_status": "Cookieステータス",
   "localstorage_status": "LocalStorageステータス",
+  "network_type": "ネットワークの種類",
   "successful": "成功",
   "failed": "失敗",
   "testing": "テスト中...",

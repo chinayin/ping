@@ -13,6 +13,7 @@
   "javascript_status": "JavaScript Status",
   "cookie_status": "Cookie Status",
   "localstorage_status": "LocalStorage Status",
+  "network_type": "Network Type",
   "successful": "Successful",
   "failed": "Failed",
   "testing": "Testing...",

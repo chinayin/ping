@@ -13,7 +13,7 @@ export default function inspection() {
    * @param success 结果
    * @param ms  毫秒数值
    */
-  const speedtest = (id, success, ms) => {
+  const speedTest = (id, success, ms) => {
     let flag = success ? label($t('successful'), 'g') : label($t('failed'), 'r')
     $(`#${id}`).innerHTML = `${flag}   ${toThousands(ms)}ms`
   }
@@ -35,6 +35,7 @@ export default function inspection() {
           { name: $t('system_information'), val: browser.getOSInfo() },
           { name: $t('web_browser_information'), val: browser.getBrowserInfo() },
           { name: $t('language_information'), val: browser.getLanguageString() },
+          { name: $t('network_type'), val: network.getNetworkType() },
           {
             name: $t('javascript_status'),
             val: label(`${$t('enable')} (${$t('version_number')}：` + JS_VERSION + ')', 'g')
@@ -135,12 +136,12 @@ export default function inspection() {
     )
 
     network.getAssetsCDNStatus('https://pcpic.uhomes.com/static/lodash/lodash-4.17.15.min.js', (success, ms) => {
-      speedtest('s_cdn_assets', success, ms)
+      speedTest('s_cdn_assets', success, ms)
     })
 
     webUrls.forEach((item, index) => {
       network.getUrlStatus(item.url, (success, ms) => {
-        speedtest(item.id, success, ms)
+        speedTest(item.id, success, ms)
       })
     })
   }
