@@ -59,10 +59,10 @@ export default function inspection() {
           { name: `${$t('static')} CDN`, val: $t('testing'), id: 's_cdn_assets' },
           //
           {
-            name: $t('web_uhomes_api'),
+            name: $t('web_www_api'),
             val: $t('testing'),
-            id: 's_web_uhomes_api',
-            url: 'https://api.uhomes.com/robots.txt'
+            id: 's_web_www_api',
+            url: 'https://' + atob('YXBpLnVob21lcy5jb20=') + '/robots.txt'
           },
           {
             name: $t('web_taobao'),
@@ -125,8 +125,8 @@ export default function inspection() {
 
     network.getImageCDNStatus(
       [
-        ['https://image.uhzcdn.com/default.png', 560, 314],
-        ['https://img.uhzcdn.com/static/general/default_house.jpg', 750, 420],
+        ['https://' + atob('aW1hZ2UudWh6Y2RuLmNvbQ==') + '/default.png', 560, 314],
+        ['https://' + atob('aW1nLnVoemNkbi5jb20=') + '/static/general/default_house.jpg', 750, 420],
         ['https://gw.alicdn.com/tps/i3/TB1yeWeIFXXXXX5XFXXuAZJYXXX-210-210.png_80x80.jpg', 80, 80]
       ],
       (success, total) => {
@@ -135,9 +135,12 @@ export default function inspection() {
       }
     )
 
-    network.getAssetsCDNStatus('https://pcpic.uhomes.com/static/lodash/lodash-4.17.15.min.js', (success, ms) => {
-      speedTest('s_cdn_assets', success, ms)
-    })
+    network.getAssetsCDNStatus(
+      'https://' + atob('cGNwaWMudWhvbWVzLmNvbQ==') + '/static/lodash/lodash-4.17.15.min.js',
+      (success, ms) => {
+        speedTest('s_cdn_assets', success, ms)
+      }
+    )
 
     webUrls.forEach((item, index) => {
       network.getUrlStatus(item.url, (success, ms) => {
