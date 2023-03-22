@@ -66,7 +66,7 @@ export const getLocalDNS = cb => {
  * @param cb
  * @returns {*[]}
  */
-export const getImageCDNStatus = (imgs, cb) => {
+export const checkImageCDNStatus = (imgs, cb) => {
   let check, count, item, _i, _len, _results
   count = 0
   check = () => {
@@ -114,41 +114,21 @@ export const getImageCDNStatus = (imgs, cb) => {
 }
 
 /**
- * 检测静态资源CDN信息
- * @param cb
- */
-export const getAssetsCDNStatus = (url, cb) => {
-  let t = +new Date()
-  return jQuery.ajax({
-    url: url,
-    dataType: 'script',
-    timeout: 10000,
-    success: (data, status, xhr) => {
-      return cb(1, +new Date() - t)
-    },
-    error: (xhr, status, err) => {
-      return cb(0, +new Date() - t)
-    },
-    complete: (xhr, status) => {}
-  })
-}
-
-/**
  * 检查网页状态
  * @param url
  * @param cb
  */
-export const getUrlStatus = (url, cb) => {
+export const checkUrlStatus = (url, cb) => {
   let t = +new Date()
   return jQuery.ajax({
     url: url,
     dataType: 'script',
     timeout: 10000,
     success: (data, status, xhr) => {
-      return cb(1, +new Date() - t)
+      return cb(1, +new Date() - t, xhr)
     },
     error: (xhr, status, err) => {
-      return cb(0, +new Date() - t)
+      return cb(0, +new Date() - t, xhr)
     },
     complete: (xhr, status) => {}
   })
@@ -159,28 +139,17 @@ export const getUrlStatus = (url, cb) => {
  * @param url
  * @param cb
  */
-export const getUrlVia = (url, cb) => {
-  let xhr = null
-  if (window.XMLHttpRequest) {
-    // code for IE7, Firefox, Opera, etc.
-    xhr = new XMLHttpRequest()
-  } else if (window.ActiveXObject) {
-    // code for IE6, IE5
-    xhr = new ActiveXObject('Microsoft.XMLHTTP')
-  }
-  if (xhr != null) {
-    xhr.onreadystatechange = stateChange
-    xhr.open('GET', url, true)
-    xhr.send(null)
-  } else {
-    alert('Your browser does not support XMLHTTP.')
-  }
-
-  function stateChange() {
+export const get = (url, cb) => {
+  const t = +new Date()
+  const xhr = new XMLHttpRequest()
+  xhr.onreadystatechange = () => {
     if (xhr.readyState == 4) {
-      cb(xhr.getAllResponseHeaders())
+      cb(1, +new Date() - t, xhr)
     }
   }
+  xhr.timeout = 10000
+  xhr.open('GET', url, true)
+  xhr.send(null)
 }
 
 /**

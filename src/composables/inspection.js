@@ -1,7 +1,7 @@
-import * as browser from '../libs/browser'
-import * as network from '../libs/network'
-import { label, querySelector as $, toThousands } from '../libs/utils'
-import { $t } from '../libs/locales'
+import * as browser from '@/libs/browser'
+import * as network from '@/libs/network'
+import { label, querySelector as $, toThousands } from '@/libs/utils'
+import { $t } from '@/libs/locales'
 
 export default function inspection() {
   let lines = [],
@@ -10,12 +10,23 @@ export default function inspection() {
 
   /**
    * 测速结果输出
+   * @param id
    * @param success 结果
    * @param ms  毫秒数值
+   * @param xhr
    */
-  const speedTest = (id, success, ms) => {
-    let flag = success ? label($t('successful'), 'g') : label($t('failed'), 'r')
-    $(`#${id}`).innerHTML = `${flag}   ${toThousands(ms)}ms`
+  const speedTest = (id, success, ms, xhr) => {
+    let flag = success ? label($t('successful'), 'g') : label($t('failed'), 'r'),
+      str = `${flag}   ${toThousands(ms)}ms`,
+      via = xhr.getResponseHeader('via'),
+      rid = xhr.getResponseHeader('x-request-id')
+    if (via) {
+      str += `, via: ${via}`
+    }
+    if (rid) {
+      str += `, ${rid}`
+    }
+    $(`#${id}`).innerHTML = str
   }
 
   /**
@@ -97,9 +108,9 @@ export default function inspection() {
         ]
       }
     ]
-    inspection.forEach((elem, index) => {
+    inspection.forEach(elem => {
       lines.push(`<h3><span>${elem.title}：</span></h3>`)
-      elem.items.forEach((item, index2) => {
+      elem.items.forEach(item => {
         lines.push(
           `<div><span class="label">${item.name}：</span><span class="norm" id="${item.id}">${item.val}</span></div>`
         )
@@ -123,7 +134,7 @@ export default function inspection() {
       $('#s_local_dns').innerHTML = data.content.ldns || ''
     })
 
-    network.getImageCDNStatus(
+    network.checkImageCDNStatus(
       [
         ['https://' + atob('aW1hZ2UudWh6Y2RuLmNvbQ==') + '/default.png', 560, 314],
         ['https://' + atob('aW1nLnVoemNkbi5jb20=') + '/static/general/default_house.jpg', 750, 420],
@@ -135,16 +146,16 @@ export default function inspection() {
       }
     )
 
-    network.getAssetsCDNStatus(
-      'https://' + atob('cGNwaWMudWhvbWVzLmNvbQ==') + '/static/lodash/lodash-4.17.15.min.js',
-      (success, ms) => {
-        speedTest('s_cdn_assets', success, ms)
+    network.checkUrlStatus(
+      'https://' + atob('c3RhdGljLnVoemNkbi5jb20K') + '/static/lodash/lodash-4.17.15.min.js',
+      (success, ms, xhr) => {
+        speedTest('s_cdn_assets', success, ms, xhr)
       }
     )
 
-    webUrls.forEach((item, index) => {
-      network.getUrlStatus(item.url, (success, ms) => {
-        speedTest(item.id, success, ms)
+    webUrls.forEach(item => {
+      network.checkUrlStatus(item.url, (success, ms, xhr) => {
+        speedTest(item.id, success, ms, xhr)
       })
     })
   }

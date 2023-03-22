@@ -1,4 +1,4 @@
-import messages from "../locales";
+import messages from "@/locales";
 import { format } from "./utils";
 
 /**
