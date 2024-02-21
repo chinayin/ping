@@ -1,11 +1,11 @@
 #
 #
 #--------------------------------------------------------------------------
-#  ping @node16
+#  ping @node18
 #--------------------------------------------------------------------------
 #
 
-FROM chinayin/node:16 AS builder
+FROM chinayin/node:18 AS builder
 RUN set -eux \
     ## install packages
     && install_packages tree \
