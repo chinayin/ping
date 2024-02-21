@@ -1,18 +1,19 @@
-import jQuery from "jquery";
-import { guid } from "./utils";
+import jQuery from 'jquery'
+import { guid } from './utils'
 
 /**
  * jsonp
  * @param url
  * @param cb
  */
-export const jsonp = (url, cb) => {
+export const jsonp = (url, cb, options = {}) => {
   return jQuery.ajax({
     url: url,
     dataType: 'jsonp',
     timeout: 10000,
     jsonp: 'cb',
-    success: cb
+    success: cb,
+    ...options
   })
 }
 
@@ -58,6 +59,15 @@ export const getLocalDNS = cb => {
   let uuid = guid(),
     url = `https://${uuid}.dns-detect.alicdn.com/api/detect/DescribeDNSLookup`
   return jsonp(url, cb)
+}
+
+/**
+ * 获取 LocalIP信息
+ * @param cb
+ * @returns {*}
+ */
+export const getLocalIP = cb => {
+  return jsonp('https://ipinfo.io/json', cb, { jsonp: 'callback' })
 }
 
 /**
@@ -130,7 +140,8 @@ export const checkUrlStatus = (url, cb) => {
     error: (xhr, status, err) => {
       return cb(0, +new Date() - t, xhr)
     },
-    complete: (xhr, status) => {}
+    complete: (xhr, status) => {
+    }
   })
 }
 

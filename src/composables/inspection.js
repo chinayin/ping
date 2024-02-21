@@ -129,9 +129,19 @@ export default function inspection() {
   const start = () => {
     init()
 
+    network.getLocalIP(data => {
+      let str = data ?
+        label($t('successful'), 'g') + ` ${data.ip||''} (${data.city||''}, ${data.country||''})` :
+        label($t('failed'), 'r')
+      $('#s_local_ip').innerHTML = str
+    })
+
     network.getLocalDNS(data => {
-      $('#s_local_ip').innerHTML = data.content.localIp || ''
-      $('#s_local_dns').innerHTML = data.content.ldns || ''
+      let str = data?
+        label($t('successful'), 'g') + ` ${data.content.ldns || ''}` :
+        label($t('failed'), 'r')
+      //$('#s_local_ip').innerHTML = data.content.localIp || ''
+      $('#s_local_dns').innerHTML = str
     })
 
     network.checkImageCDNStatus(
