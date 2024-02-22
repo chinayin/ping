@@ -31,6 +31,7 @@ target "release" {
   inherits = ["_all_platforms"]
   context  = "."
   tags     = [
-    "${repository}:${version}"
+    "${repository}:${version}",
+    "${repository}:latest"
   ]
 }
