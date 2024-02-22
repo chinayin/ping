@@ -31,7 +31,7 @@ jobs:
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
       - name: Build Package
-        run: yarn build
+        run: yarn build:gh-pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

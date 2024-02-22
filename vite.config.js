@@ -2,11 +2,12 @@ import path from 'path'
 import pkg from './package.json'
 import legacy from '@vitejs/plugin-legacy'
 import { createHtmlPlugin } from 'vite-plugin-html'
+import { defineConfig } from 'vite'
 
 const r = p => path.resolve(__dirname, './src', p)
 
 // eslint-disable-next-line no-unused-vars
-export default ({ command }) => {
+export default defineConfig(({ command, mode }) => {
   return {
     server: { port: 3000 },
     preview: { port: 8080 },
@@ -36,4 +37,4 @@ export default ({ command }) => {
       __APP_VERSION__: JSON.stringify(`v${pkg.version}`)
     }
   }
-}
+})
