@@ -130,16 +130,14 @@ export default function inspection() {
     init()
 
     network.getLocalIP(data => {
-      let str = data ?
-        label($t('successful'), 'g') + ` ${data.ip||''} (${data.city||''}, ${data.country||''})` :
-        label($t('failed'), 'r')
+      let str = data
+        ? label($t('successful'), 'g') + ` ${data.ip || ''} (${data.city || ''}, ${data.country || ''})`
+        : label($t('failed'), 'r')
       $('#s_local_ip').innerHTML = str
     })
 
     network.getLocalDNS(data => {
-      let str = data?
-        label($t('successful'), 'g') + ` ${data.content.ldns || ''}` :
-        label($t('failed'), 'r')
+      let str = data ? label($t('successful'), 'g') + ` ${data.content.ldns || ''}` : label($t('failed'), 'r')
       //$('#s_local_ip').innerHTML = data.content.localIp || ''
       $('#s_local_dns').innerHTML = str
     })

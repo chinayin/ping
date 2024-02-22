@@ -1,5 +1,5 @@
-import messages from "@/locales";
-import { format } from "./utils";
+import messages from '@/locales'
+import { format } from './utils'
 
 /**
  * 检测语言

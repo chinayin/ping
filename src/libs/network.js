@@ -140,8 +140,7 @@ export const checkUrlStatus = (url, cb) => {
     error: (xhr, status, err) => {
       return cb(0, +new Date() - t, xhr)
     },
-    complete: (xhr, status) => {
-    }
+    complete: (xhr, status) => {}
   })
 }
 

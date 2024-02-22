@@ -1,9 +1,12 @@
+printWidth: 120
+tabWidth: 2
 semi: false
 singleQuote: true
-printWidth: 120
-trailingComma: 'none'
-arrowParens: 'avoid'
+useTabs: false
+trailingComma: none
+arrowParens: avoid
+bracketSpacing: true
 overrides:
-  - files: "{**/*,*}.{js,ts,jsx,tsx,js2}"
+  - files: '{**/*,*}.{js,ts,jsx,tsx,js2}'
     options:
       parser: meriyah
