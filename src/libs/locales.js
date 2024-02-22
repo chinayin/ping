@@ -9,8 +9,10 @@ export const detectLocale = () => {
   let language = (navigator.language || navigator.userLanguage).toLowerCase().replace('-', '_'),
     locale = language
   if (language === 'zh_tw') locale = 'zh_hk'
+  // eslint-disable-next-line no-prototype-builtins
   if (messages.hasOwnProperty(locale)) return locale
   locale = language.substr(0, 2)
+  // eslint-disable-next-line no-prototype-builtins
   if (messages.hasOwnProperty(locale)) return locale
   return 'zh'
 }

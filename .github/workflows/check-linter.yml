@@ -1,11 +1,9 @@
-name: Deploy to Pages
+name: Check linting
 
 on:
   push:
     branches:
       - master
-    tags:
-      - 'v*'
   pull_request:
     branches:
       - master
@@ -15,7 +13,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,22 +25,5 @@ jobs:
           cache: yarn
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
-      - name: Build Package
-        run: yarn build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: gh-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Verify linter
+        run: npm run lint:check

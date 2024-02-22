@@ -10,3 +10,7 @@ overrides:
   - files: '{**/*,*}.{js,ts,jsx,tsx,js2}'
     options:
       parser: meriyah
+  - files: '*.json5'
+    options:
+      singleQuote: false
+      quoteProps: preserve

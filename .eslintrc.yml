@@ -1,0 +1,17 @@
+env:
+  browser: true
+  node: true
+  commonjs: true
+  es2021: true
+  jest: true
+  jquery: true
+plugins: []
+extends:
+  - eslint:recommended
+  - prettier
+parserOptions:
+  sourceType: module
+rules:
+  semi:
+    - error
+    - never

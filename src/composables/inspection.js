@@ -49,6 +49,7 @@ export default function inspection() {
           { name: $t('network_type'), val: network.getNetworkType() },
           {
             name: $t('javascript_status'),
+            // eslint-disable-next-line no-undef
             val: label(`${$t('enable')} (${$t('version_number')}：` + JS_VERSION + ')', 'g')
           },
           {

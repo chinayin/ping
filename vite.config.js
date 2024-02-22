@@ -5,6 +5,7 @@ import { createHtmlPlugin } from 'vite-plugin-html'
 
 const r = p => path.resolve(__dirname, './src', p)
 
+// eslint-disable-next-line no-unused-vars
 export default ({ command }) => {
   return {
     server: { port: 3000 },

@@ -137,9 +137,11 @@ export const checkUrlStatus = (url, cb) => {
     success: (data, status, xhr) => {
       return cb(1, +new Date() - t, xhr)
     },
+    // eslint-disable-next-line no-unused-vars
     error: (xhr, status, err) => {
       return cb(0, +new Date() - t, xhr)
     },
+    // eslint-disable-next-line no-unused-vars
     complete: (xhr, status) => {}
   })
 }
