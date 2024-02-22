@@ -16,7 +16,7 @@ jobs:
       - name: Set variables
         id: vars
         run: |
-          echo "version=$(jq -r '.version' package.json)" >> "$GITHUB_ENV"
+          echo "version=v$(jq -r '.version' package.json)" >> "$GITHUB_ENV"
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx

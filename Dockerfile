@@ -20,3 +20,4 @@ FROM chinayin/nginx:1.24.0
 RUN set -eux \
     && rm -f /usr/share/nginx/html/*
 COPY --from=builder /app/dist /usr/share/nginx/html
+EXPOSE 80
