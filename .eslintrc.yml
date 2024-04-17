@@ -15,5 +15,3 @@ rules:
   semi:
     - error
     - never
-ignores:
-  - dist
