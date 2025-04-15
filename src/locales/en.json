@@ -27,5 +27,5 @@
   "web_bbc": "BBC",
   "web_cnn": "CNN",
   "pic_cdn_result": "Attempt {0} pictures, {1} normally",
-  "privacy_policy": "This page is only used to locate your browser and network information, and does not involve your privacy information. Please feel free to use it."
+  "privacy_policy": "This page is used to gather your network environment information to help us quickly identify and resolve the issue you’re experiencing."
 }
