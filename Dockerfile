@@ -5,7 +5,7 @@
 #--------------------------------------------------------------------------
 #
 
-FROM chinayin/node:18 AS builder
+FROM chinayin/node:22 AS builder
 RUN set -eux \
     ## install packages
     && install_packages tree \
